@@ -1,5 +1,5 @@
-# Dashboard
-- dashboard
+# Modern Dashboard
+- RadarScanEffect
 
 ![](markdown.data/modern.png)
 
