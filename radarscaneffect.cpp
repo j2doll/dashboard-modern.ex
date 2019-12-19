@@ -1,3 +1,5 @@
+
+#include <QUrl>
 #include <QOpenGLFramebufferObject>
 #include <QQuickWindow>
 #include <QDebug>
@@ -5,6 +7,8 @@
 #include <QSGSimpleTextureNode>
 
 #include "radarscaneffect.hpp"
+
+#include <QOpenGLFunctions>
 
 class TextureNode : public QObject, public QSGSimpleTextureNode
 {
@@ -44,8 +48,10 @@ public slots:
 
         if (!m_program) {
             m_program = new QOpenGLShaderProgram();
-            m_program->addShaderFromSourceFile(QOpenGLShader::Vertex, "vert.glsl");
-            m_program->addShaderFromSourceFile(QOpenGLShader::Fragment, "frag.glsl");
+            m_program->addShaderFromSourceFile(QOpenGLShader::Vertex,
+                                               "qrc:/vert.glsl");
+            m_program->addShaderFromSourceFile(QOpenGLShader::Fragment,
+                                               "qrc:/frag.glsl");
             m_program->link();
 
             QOpenGLFramebufferObjectFormat format;
@@ -61,7 +67,12 @@ public slots:
         m_program->bind();
         m_fbo[m_index]->bind();
 
-        glViewport(0, 0, size.width(), size.height());
+        // {{
+        QOpenGLFunctions glFuncs(QOpenGLContext::currentContext());
+        // }}
+
+        // glViewport(0, 0, size.width(), size.height());
+        glFuncs.glViewport(0, 0, size.width(), size.height());
 
         int ni = (m_index + 1) % 2;
 
@@ -80,7 +91,9 @@ public slots:
         m_program->enableAttributeArray(vertex);
         m_program->enableAttributeArray(texcoord);
 
-        glActiveTexture(GL_TEXTURE0);
+        // glActiveTexture(GL_TEXTURE0);
+        glFuncs.glActiveTexture(GL_TEXTURE0);
+
         m_texture[ni]->bind();
 
         GLfloat values[] = {
@@ -105,9 +118,12 @@ public slots:
         };
         m_program->setAttributeArray(texcoord, GL_FLOAT, texvalues, 2);
 
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+       // glDrawArrays(GL_TRIANGLES, 0, 6);
+        glFuncs.glDrawArrays(GL_TRIANGLES, 0, 6);
 
-        glBindTexture(GL_TEXTURE_2D, 0);
+        // glBindTexture(GL_TEXTURE_2D, 0);
+        glFuncs.glBindTexture(GL_TEXTURE_2D, 0);
+
         m_program->disableAttributeArray(texcoord);
         m_program->disableAttributeArray(vertex);
         m_fbo[m_index]->bindDefault();

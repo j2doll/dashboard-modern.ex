@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>frag.glsl</file>
+        <file>vert.glsl</file>
+        <file>image/biao1.png</file>
+        <file>image/biao2.png</file>
+        <file>image/dianchi.png</file>
+        <file>image/jiantou.png</file>
+        <file>image/jiayou.png</file>
+        <file>image/jinguang.png</file>
+        <file>image/jiyouyali.png</file>
+        <file>image/left1.png</file>
+        <file>image/P.png</file>
+        <file>image/right1.png</file>
+        <file>image/rightleft2.png</file>
+        <file>image/underside.png</file>
+        <file>image/wendu.png</file>
+        <file>image/yuanguang.png</file>
+        <file>image/zhizhen1.png</file>
+        <file>image/zhizhen2.png</file>        
+    </qresource>
+</RCC>
+
+
+

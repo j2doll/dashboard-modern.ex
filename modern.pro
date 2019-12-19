@@ -1,10 +1,21 @@
-QT += qml opengl quick
+# modern.pro
 
-SOURCES += main.cpp \ 
-    radarscaneffect.cpp
-HEADERS += \ 
-    radarscaneffect.hpp
+QT += qml
+QT += opengl
+QT += quick
 
-OTHER_FILES += main.qml \
-    vert.glsl \
-    frag.glsl
+HEADERS += \
+radarscaneffect.hpp
+
+SOURCES += \
+main.cpp \
+radarscaneffect.cpp
+
+RESOURCES += \
+modern.qrc
+
+OTHER_FILES += \
+main.qml \
+vert.glsl \
+frag.glsl
+
