@@ -1,7 +1,7 @@
 # Modern Dashboard
 - RadarScanEffect
 
-![](markdown.data/modern.ani.gif)
+<img src="markdown.data/modern.ani.gif" />
 
 ## Tested Environment
 - Qt 6.7.0 (MingW 64-bit)
