@@ -4,8 +4,8 @@
 <img src="markdown.data/modern.ani.gif" />
 
 ## Tested Environment
-- Qt 6.7.0 (MingW 64-bit)
-	- Qt 6 or higher version is required.
+- Qt 6.7.0 (MingW 64-bit) + Windows 10
+- Qt 6 or higher version is required
 
 ## Links
 - orignal code : https://github.com/yuq/dashboard-modern
