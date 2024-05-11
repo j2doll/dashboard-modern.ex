@@ -1,5 +1,7 @@
 # modern.pro
 
+QT += core
+QT += widgets
 QT += qml
 QT += opengl
 QT += quick

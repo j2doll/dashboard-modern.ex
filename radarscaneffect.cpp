@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QOpenGLShaderProgram>
 #include <QSGSimpleTextureNode>
+#include <QQuickWindow>
 
 #include "radarscaneffect.hpp"
 
@@ -58,8 +59,16 @@ public slots:
             format.setAttachment(QOpenGLFramebufferObject::NoAttachment);
             m_fbo[0] = new QOpenGLFramebufferObject(size, format);
             m_fbo[1] = new QOpenGLFramebufferObject(size, format);
-            m_texture[0] = m_window->createTextureFromId(m_fbo[0]->texture(), size);
-            m_texture[1] = m_window->createTextureFromId(m_fbo[1]->texture(), size);
+
+            // m_texture[0] = m_window->createTextureFromId(m_fbo[0]->texture(), size);
+            // m_texture[1] = m_window->createTextureFromId(m_fbo[1]->texture(), size);
+
+            ////
+            //  return QNativeInterface::QSGOpenGLTexture::fromNative(tex, m_window, size);
+
+            m_texture[0] = QNativeInterface::QSGOpenGLTexture::fromNative(m_fbo[0]->texture(), m_window, size);
+            m_texture[1] = QNativeInterface::QSGOpenGLTexture::fromNative(m_fbo[1]->texture(), m_window, size);
+
         }
 
         setTexture(m_texture[m_index]);
@@ -94,7 +103,9 @@ public slots:
         // glActiveTexture(GL_TEXTURE0);
         glFuncs.glActiveTexture(GL_TEXTURE0);
 
-        m_texture[ni]->bind();
+
+        // m_texture[ni]->bind();
+
 
         GLfloat values[] = {
             -1, 1, 0,

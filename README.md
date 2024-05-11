@@ -1,12 +1,13 @@
 # Modern Dashboard
 - RadarScanEffect
 
-![](markdown.data/modern.png)
+![](markdown.data/modern.ani.gif)
 
 ## Tested Environment
-- Qt 5.13.1 (MingW 64-bit)
+- Qt 6.7.0 (MingW 64-bit)
+	- Qt 6 or higher version is required.
 
 ## Links
-- https://github.com/yuq/dashboard-modern
+- orignal code : https://github.com/yuq/dashboard-modern
 - forked and fixed : https://github.com/j2doll/dashboard-modern.ex
 
